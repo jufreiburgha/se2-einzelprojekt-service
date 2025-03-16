@@ -30,6 +30,20 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+    mainClass.set("at.aau.serg.SpringAppKt")
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "at.aau.serg.SpringAppKt"
+    }
+}
+
+springBoot {
+    mainClass.set("at.aau.serg.SpringAppKt")
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
 }
